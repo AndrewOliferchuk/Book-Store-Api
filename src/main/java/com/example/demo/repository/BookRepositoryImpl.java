@@ -3,20 +3,17 @@ package com.example.demo.repository;
 import com.example.demo.model.Book;
 import jakarta.persistence.criteria.CriteriaQuery;
 import java.util.List;
+import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+@RequiredArgsConstructor
 @Repository
 public class BookRepositoryImpl implements BookRepository {
-    private final SessionFactory sessionFactory;
-
-    @Autowired
-    public BookRepositoryImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private SessionFactory sessionFactory;
 
     @Override
     public Book save(Book book) {
@@ -49,6 +46,14 @@ public class BookRepositoryImpl implements BookRepository {
             return session.createQuery(criteriaQuery).getResultList();
         } catch (Exception e) {
             throw new RuntimeException("Can't get all books", e);
+        }
+    }
+
+    @Override
+    public Optional<Book> getBookById(Long id) {
+        try (Session session = sessionFactory.getCurrentSession()) {
+            Book book = session.get(Book.class, id);
+            return Optional.ofNullable(book);
         }
     }
 }
