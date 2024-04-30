@@ -1,6 +1,5 @@
 package com.example.demo.dto;
 
-import jakarta.persistence.Column;
 import java.math.BigDecimal;
 import lombok.Data;
 
