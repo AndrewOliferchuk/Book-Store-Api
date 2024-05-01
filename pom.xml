@@ -48,7 +48,6 @@
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -58,6 +57,15 @@
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 			<version>8.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-maven-plugin</artifactId>
+			<version>4.22.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
