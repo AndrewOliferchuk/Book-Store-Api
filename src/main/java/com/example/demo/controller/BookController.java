@@ -8,7 +8,6 @@ import jakarta.validation.constraints.Positive;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,13 +34,11 @@ public class BookController {
         return bookService.getBookById(id);
     }
 
-    @Validated
     @PostMapping
     public BookDto createBook(@RequestBody @Valid CreateBookRequestDto requestDto) {
         return bookService.save(requestDto);
     }
 
-    @Validated
     @PutMapping("/{id}")
     public BookDto updateBook(
             @PathVariable @Positive Long id, @RequestBody @Valid CreateBookRequestDto requestDto) {
