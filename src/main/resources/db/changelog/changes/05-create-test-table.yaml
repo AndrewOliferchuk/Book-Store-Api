@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-users-table
+      author: bobik
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: email
+                  value: 'User@gmail.com'
+              - column:
+                  name: password
+                  value: '$2a$10$T0bqs8oNbxEB2n5jjWaN4.aB28xVGvxpDFpeArWktCozfCeeBK07i'
+              - column:
+                  name: first_name
+                  value: 'User'
+              - column:
+                  name: last_name
+                  value: ''
+              - column:
+                  name: shipping_address
+                  value: ''
+              - column:
+                  name: is_deleted
+                  value: 0
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: email
+                  value: 'Admin@gmail.com'
+              - column:
+                  name: password
+                  value: '$2a$10$lRaZUGUfwn7Zx03n4myZ4eGpAMWAVk/8yD24OhCeSQE.MkU2DhGWu'
+              - column:
+                  name: first_name
+                  value: 'Admin'
+              - column:
+                  name: last_name
+                  value: ''
+              - column:
+                  name: shipping_address
+                  value: ''
+              - column:
+                  name: is_deleted
+                  value: 0
