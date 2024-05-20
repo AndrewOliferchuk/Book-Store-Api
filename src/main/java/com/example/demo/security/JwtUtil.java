@@ -34,7 +34,7 @@ public class JwtUtil {
 
     public Boolean isValidToken(String token) {
         try {
-            Jws<Claims> claimsJws = Jwts.parserBuilder()
+            Jws<Claims> claimsJws = Jwts.parser()
                     .setSigningKey(secret)
                     .build()
                     .parseClaimsJws(token);
@@ -50,7 +50,7 @@ public class JwtUtil {
     }
 
     private <T> T getClaimFromToken(String token, Function<Claims, T> claimResolve) {
-        final Claims claims = Jwts.parserBuilder()
+        final Claims claims = Jwts.parser()
                 .setSigningKey(secret)
                 .build()
                 .parseClaimsJws(token)
