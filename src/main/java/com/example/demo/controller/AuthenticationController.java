@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.UserLoginRequestDto;
-import com.example.demo.dto.UserLoginResponseDto;
-import com.example.demo.dto.UserRegistrationRequestDto;
-import com.example.demo.dto.UserResponseDto;
+import com.example.demo.dto.user.UserLoginRequestDto;
+import com.example.demo.dto.user.UserLoginResponseDto;
+import com.example.demo.dto.user.UserRegistrationRequestDto;
+import com.example.demo.dto.user.UserResponseDto;
 import com.example.demo.exeption.RegistrationException;
 import com.example.demo.security.AuthenticationService;
 import com.example.demo.service.UserService;
