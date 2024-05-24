@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-users-roles-table
+      author: bobik
+      changes:
+        - createTable:
+            tableName: book_categories
+            columns:
+              - column:
+                  name: book_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: category_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+            uniqueConstraints:
+                - uniqueConstraint:
+                    name: book_id-category_id_unique
+                    columnNames:
+                      - book_id
+                      - category_id
