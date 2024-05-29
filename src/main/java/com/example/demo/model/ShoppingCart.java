@@ -7,9 +7,10 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import java.util.Set;
 import lombok.EqualsAndHashCode;
@@ -24,13 +25,14 @@ import org.hibernate.annotations.SQLRestriction;
 @Setter
 @SQLDelete(sql = "UPDATE shopping_cart SET is_deleted = true WHERE id = ?")
 @SQLRestriction(value = "is_deleted = false")
-@Table(name = "shopping_cart")
+@Table(name = "shopping_carts")
 public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @MapsId
     @OneToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn
+    @JoinColumn(name = "id", nullable = false)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private User user;
