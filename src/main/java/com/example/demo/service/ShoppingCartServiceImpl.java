@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
+@Transactional
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     private ShoppingCartRepository shoppingCartRepository;
     private CartItemRepository cartItemRepository;
@@ -36,7 +37,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    @Transactional
     public void removeBookFromCart(Long cartItemId, Long userId) {
         ShoppingCart shoppingCart = shoppingCartRepository.findByUserId(userId)
                         .orElseThrow(() -> new EntityNotFoundException(
@@ -49,7 +49,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    @Transactional
     public ShoppingCartResponseDto getCartByUser(Long userId) {
         ShoppingCart shoppingCart = shoppingCartRepository.findByUserId(userId)
                         .orElseThrow(() -> new EntityNotFoundException(
@@ -58,7 +57,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    @Transactional
     public ShoppingCartResponseDto addBookToShopCart(Long userId,
                            CartItemRequestDto cartItemRequestDto) {
         ShoppingCart shoppingCart = shoppingCartRepository.findByUserId(userId)
@@ -77,7 +75,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    @Transactional
     public ShoppingCartResponseDto updateCartItem(Long cartItemId, int quantity, Long userId) {
         ShoppingCart shoppingCart = shoppingCartRepository.findByUserId(userId)
                 .orElseThrow(() -> new EntityNotFoundException(
