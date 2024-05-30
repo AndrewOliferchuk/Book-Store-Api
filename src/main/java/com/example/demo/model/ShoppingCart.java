@@ -23,6 +23,8 @@ import org.hibernate.annotations.SQLRestriction;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
+@ToString
 @SQLDelete(sql = "UPDATE shopping_cart SET is_deleted = true WHERE id = ?")
 @SQLRestriction(value = "is_deleted = false")
 @Table(name = "shopping_carts")
@@ -33,8 +35,6 @@ public class ShoppingCart {
     @MapsId
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id", nullable = false)
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     private User user;
     @OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CartItem> cartItems;

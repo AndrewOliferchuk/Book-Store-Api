@@ -33,8 +33,8 @@ public class ShoppingCartController {
             description = "Add book to the shopping cart")
     public ShoppingCartResponseDto addBookToCart(Authentication authentication,
                          @RequestBody @Valid CartItemRequestDto cartItemRequestDto) {
-        User user = (User) authentication.getPrincipal();
-        return shoppingCartService.addBookToShopCart(user.getId(), cartItemRequestDto);
+        return shoppingCartService.addBookToShopCart(getUserFromAuthentication(authentication)
+                .getId(), cartItemRequestDto);
     }
 
     @GetMapping
@@ -42,8 +42,7 @@ public class ShoppingCartController {
     @Operation(summary = "Get shopping cart",
             description = "Get shopping cart")
     public ShoppingCartResponseDto getShoppingCart(Authentication authentication) {
-        User user = (User) authentication.getPrincipal();
-        return shoppingCartService.getCartByUser(user.getId());
+        return shoppingCartService.getCartByUser(getUserFromAuthentication(authentication).getId());
     }
 
     @PutMapping("/items/{cartItemId}")
@@ -53,9 +52,8 @@ public class ShoppingCartController {
     public ShoppingCartResponseDto update(@PathVariable @Positive Long cartItemId,
             @RequestBody @Valid CartItemRequestDto cartItemRequestDto,
                            Authentication authentication) {
-        User user = (User) authentication.getPrincipal();
         return shoppingCartService.updateCartItem(cartItemId,
-                cartItemRequestDto.getQuantity(), user.getId());
+              cartItemRequestDto.getQuantity(), getUserFromAuthentication(authentication).getId());
     }
 
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
@@ -63,7 +61,11 @@ public class ShoppingCartController {
     @Operation(summary = "Delete Book from cart",
             description = "Delete cartItem by Id")
     public void delete(Long cartItemId, Authentication authentication) {
-        User user = (User) authentication.getPrincipal();
-        shoppingCartService.removeBookFromCart(cartItemId, user.getId());
+        shoppingCartService.removeBookFromCart(
+                cartItemId, getUserFromAuthentication(authentication).getId());
+    }
+
+    private User getUserFromAuthentication(Authentication authentication) {
+        return (User) authentication.getPrincipal();
     }
 }

@@ -36,6 +36,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
+    @Transactional
     public void removeBookFromCart(Long cartItemId, Long userId) {
         ShoppingCart shoppingCart = shoppingCartRepository.findByUserId(userId)
                         .orElseThrow(() -> new EntityNotFoundException(
