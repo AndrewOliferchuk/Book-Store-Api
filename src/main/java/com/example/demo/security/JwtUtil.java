@@ -34,6 +34,9 @@ public class JwtUtil {
 
     public Boolean isValidToken(String token) {
         try {
+            if (token == null || token.isEmpty()) {
+                return false;
+            }
             Jws<Claims> claimsJws = Jwts.parser()
                     .setSigningKey(secret)
                     .build()

@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController {
-    private UserService userService;
-    private AuthenticationService authenticationService;
+    private final UserService userService;
+    private final AuthenticationService authenticationService;
 
     @PostMapping("/login")
     public UserLoginResponseDto login(@RequestBody @Valid UserLoginRequestDto requestDto) {
