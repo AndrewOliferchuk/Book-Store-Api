@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/books")
 public class BookController {
-    private BookService bookService;
+    private final BookService bookService;
 
     @GetMapping
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
@@ -44,6 +44,7 @@ public class BookController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Create a new book", description = "Create a new book")
     public BookResponseDto createBook(@RequestBody @Valid CreateBookRequestDto requestDto) {
