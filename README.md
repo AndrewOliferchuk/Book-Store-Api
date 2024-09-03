@@ -1,4 +1,4 @@
-
+![screenshot](https://github.com/AndrewOliferchuk/Book-Store-Api/blob/master/Untitled.png)
 
 ## Introduction
 
@@ -79,6 +79,8 @@ CategoryController: Enables administrators to manage categories.
 OrderController: Allows administrators to update order statuses and manage orders.
 ShoppingCartController: Manages the shopping cart for adding, updating, and removing items.
 
+
+![screenshot](https://github.com/AndrewOliferchuk/Book-Store-Api/blob/master/Untitled%20(2).png)
 
 ## Contact
 
