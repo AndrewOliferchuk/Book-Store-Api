@@ -1,4 +1,4 @@
-![screenshot](https://github.com//AndrewOliferchuk/Book-Store-Api/blob/master/Untitled.png)
+![screenshot](https://github.com/AndrewOliferchuk/Book-Store-Api/blob/master/Untitled.png)
 
 ## Introduction
 
